@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈Promoções🏖</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body id="promocoes"
+    style="background: url('/img/fundo.jpg') no-repeat center center fixed; background-size: cover;">
+
+    <header>
+        <nav id="header"></nav>
+    </header>
+
+    <main class="hidden">
+        <div class="container mt-4">
+            <h1 class="text-center mb-8 page-title">Promoções</h1>
+            <div id="carouselpromo" class="carousel slide" data-bs-ride="carousel">
+                <!-- traços marcadores -->
+                <div class="carousel-indicators">
+                    <!-- primeiro marcador (ativo por padrão) -->
+                    <button type="button" data-bs-target="#carouselpromo" data-bs-slide-to="0" class="active"
+                        aria-11 current="true" aria-label="Slide 1"></button>
+                    <!-- segundo marcador: link imagem 2 -->
+                    <button type="button" data-bs-target="#carouselpromo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <!-- terceiro marcador: link imagem 3 -->
+                    <button type="button" data-bs-target="#carouselpromo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/img/nordeste.jpg"
+                            class="d-block w-100" alt="Slide 1">
+                        <div class="carousel-caption-promo-sm">
+                            <h3>Nordeste</h3>
+                            <p>Aproveite os destinos paradisíacos do nordeste para curtir e relaxar, como: Porto de
+                                Galinhas, Fortaleza e Salvador.</p>
+                            <p>Use o código do cupom abaixo na pesquisa e garanta 15% de desconto.</p>
+                            <div class="inner-card text-center-sm">
+                                <h5 class="inner-card-title">Inclui:</h5>
+                                <p class="inner-card-description">
+                                    ✈︎ Hospedagens em resorts de luxo;<br> ✈︎ Passagens aéreas;<br> ✈︎ All inclusive.
+                                </p>
+                                <!-- Botão de ativação -->
+                                <button class="inner-card-coupon" th:onclick="copyToClipboard(event)"
+                                    data-bs-toggle="modal" data-bs-target="#modal-nordeste">NORDESTE15</button>
+                                <!-- Modal – inclui fundo semitransparente -->
+                                <div class="modal fade" id="modal-nordeste" tabindex="-1" role="dialog">
+                                    <!-- caixa de diálogo -->
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <!-- conteúdo do modal -->
+                                        <div class="modal-content">
+                                            <!-- cabeçalho do modal -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="titulo-modal">Tudo certo!</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                                <!-- botão fechar: x -->
+                                            </div>
+                                            <!-- corpo do modal -->
+                                            <div class="modal-body">
+                                                Cupom de desconto "NORDESTE15" copiado com sucesso. <br> Não se
+                                                esqueça de colar o cupom na pesquisa para garantir seu desconto!
+                                            </div>
+                                            <!-- rodapé do modal -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                                <!-- botão fechar -->
+                                            </div>
+                                        </div>
+                                        <!-- /modal-content -->
+                                    </div>
+                                    <!-- /modal-dialog -->
+                                </div>
+                                <!-- /modal -->
+                            </div>
+                            <p><a href="/destino"
+                                    class="btn btn-warning">Aproveite a promoção agora</a></p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/norte.jpeg"
+                            class="d-block w-100" alt="Slide 2">
+                        <div class="carousel-caption-promo-sm">
+                            <h3>Norte</h3>
+                            <p>Conheça incríveis destinos de ecoturismo na região Norte para você conhecer. São lugares como:
+                                Manaus, Alter do Chão e Amazonas.</p>
+                            <p>Use o código do cupom abaixo na pesquisa e garanta 10% de desconto.</p>
+                            <div class="inner-card text-center">
+                                <h5 class="inner-card-title">Inclui:</h5>
+                                <p class="inner-card-description">
+                                    ✈︎ Passeios em florestas;<br> ✈︎ Hotéis ecológicos;<br> ✈︎ Guia especializado.
+                                </p>
+                                <!-- Botão de ativação -->
+                                <button class="inner-card-coupon" th:onclick="copyToClipboard(event)"
+                                    data-bs-toggle="modal" data-bs-target="#modal-norte">NORTE10</button>
+                                <!-- Modal – inclui fundo semitransparente -->
+                                <div class="modal fade" id="modal-norte" tabindex="-1" role="dialog">
+                                    <!-- caixa de diálogo -->
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <!-- conteúdo do modal -->
+                                        <div class="modal-content">
+                                            <!-- cabeçalho do modal -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="titulo-modal">Tudo certo!</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                                <!-- botão fechar: x -->
+                                            </div>
+                                            <!-- corpo do modal -->
+                                            <div class="modal-body">
+                                                Cupom de desconto "NORTE10" copiado com sucesso. <br> Não se
+                                                esqueça de colar o cupom na pesquisa para garantir seu desconto!
+                                            </div>
+                                            <!-- rodapé do modal -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                                <!-- botão fechar -->
+                                            </div>
+                                        </div>
+                                        <!-- /modal-content -->
+                                    </div>
+                                    <!-- /modal-dialog -->
+                                </div>
+                                <!-- /modal -->
+                            </div>
+                            <a href="/destino" class="btn btn-warning">Aproveite
+                                a promoção agora</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/sul.jpg"
+                            class="d-block w-100" alt="Slide 3">
+                        <div class="carousel-caption-promo-sm">
+                            <h3>Sul</h3>
+                            <p>Praias paradisíacas, cânions e cidadezinhas cheias de charme para você conhecer, como:
+                                Gramado, Florianópolis e Curitiba.</p>
+                            <p>Use o código do cupom abaixo na pesquisa e garanta 10% de desconto.</p>
+                            <div class="inner-card text-center">
+                                <h5 class="inner-card-title">Inclui:</h5>
+                                <p class="inner-card-description">
+                                    ✈︎ Roteiro personalizado;<br> ✈︎ Transporte e guia turístico;<br> ✈︎ Hotéis de
+                                    qualidade.
+                                </p>
+                                <!-- Botão de ativação -->
+                                <button class="inner-card-coupon" th:onclick="copyToClipboard(event)"
+                                    data-bs-toggle="modal" data-bs-target="#modal-sul">SUL10</button>
+                                <!-- Modal – inclui fundo semitransparente -->
+                                <div class="modal fade" id="modal-sul" tabindex="-1" role="dialog">
+                                    <!-- caixa de diálogo -->
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <!-- conteúdo do modal -->
+                                        <div class="modal-content">
+                                            <!-- cabeçalho do modal -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="titulo-modal">Tudo certo!</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                                <!-- botão fechar: x -->
+                                            </div>
+                                            <!-- corpo do modal -->
+                                            <div class="modal-body">
+                                                Cupom de desconto "SUL10" copiado com sucesso. <br> Não se
+                                                esqueça de colar o cupom na pesquisa para garantir seu desconto!
+                                            </div>
+                                            <!-- rodapé do modal -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                                <!-- botão fechar -->
+                                            </div>
+                                        </div>
+                                        <!-- /modal-content -->
+                                    </div>
+                                    <!-- /modal-dialog -->
+                                </div>
+                                <!-- /modal -->
+                            </div>
+                            <a href="/destino}" class="btn btn-warning">Aproveite
+                                a promoção agora</a>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselpromo"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselpromo"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+       <div class="text-center">
+			<button type="button" class="btn btn-secondary" onclick="window.history.back()">Voltar</button>   
+        </div>
+    </main>
+
+    <footer> </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/function.js"></script>
+    <script src="/scripts/components.js"></script>
+</body>
+
+</html>

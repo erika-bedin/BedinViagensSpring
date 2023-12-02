@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈Efetuar Reserva🏖</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body id="reservar"
+    style="background: url('/img/fundo.jpg') no-repeat center center fixed; background-size: cover;">
+
+    <header>
+        <nav id="header"></nav>
+    </header>
+
+    <main class="hidden mt-4">
+        <div class="container">
+            <h1 class="text-center mb-8 page-title">Efetuar Reserva</h1>
+            <div class="search-form">
+                <!-- Adicione o ID do pacote no modelo conforme necessário -->
+                <form id="reservaForm" class="form-control-sm" method="post"
+                    th:object="${reserva}">
+                    <input type="hidden" name="idPacote" th:value="${idPacote}" />
+
+                    <h2 class="text-center mb-8 page-title">Detalhes do Pacote</h2>
+                    <div class="form-group mb-2">
+                        <label for="destino">Destino:</label>
+                        <input type="text" name="destino" th:value="${pacote.destino}" readonly />
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="descricao">Descrição:</label>
+                        <textarea name="descricao" readonly rows="2"
+                            style="width: 91%; max-width: 100%;"
+                            th:text="${pacote.descricao}"></textarea>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="dataPartida">Data de Partida:</label>
+                        <input type="text" name="dataPartida" th:value="${pacote.dataPartida}" readonly />
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="dataRetorno">Data de Retorno:</label>
+                        <input type="text" name="dataRetorno" th:value="${pacote.dataRetorno}" readonly />
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="nomeHotel">Nome do Hotel:</label>
+                        <input type="text" name="nomeHotel" th:value="${pacote.nomeHotel}" readonly />
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="valor">Valor:</label>
+                        <input type="text" name="valor" th:value="${pacote.valor}" readonly />
+                    </div>
+
+                    <h2 class="text-center mb-8 page-title">Dados do Cliente</h2>
+                    <div class="form-group mb-2">
+                        <label for="idCliente">ID do Cliente:</label>
+                        <input type="text" name="idCliente" class="form-control" />
+                        <h6>Não sabe o número do seu ID de Cliente? Não tem problema, basta consultar
+                            <a href="cliente2.html">aqui:</a>.</h6>
+                    </div>
+
+                    <div class="form-group mb-2" style="text-align: center;">
+                        <button class='btn btn-primary' type="submit">Confirmar Reserva</button>
+                        <a href="/reserva/listar" class="btn btn-secondary" id="btnVoltar">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer> </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("reservaForm").addEventListener("submit", function (event) {
+                // Adicione um input hidden para indicar que o formulário foi submetido
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "formSubmitted";
+                input.value = "true";
+                this.appendChild(input);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/function.js"></script>
+    <script src="/scripts/components.js"></script>
+</body>
+
+</html>

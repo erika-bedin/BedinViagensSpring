@@ -1,6 +1,5 @@
 package com.bedinviagens.controller;
 
-import com.bedinviagens.model.Cliente;
 import com.bedinviagens.model.Mensagem;
 import com.bedinviagens.repository.MensagemRepository;
 
@@ -21,22 +20,23 @@ public class MensagemController {
     private MensagemRepository mensagemRepository;
 
 	
-	@GetMapping("/contato")
- 	public ModelAndView cadastrar() {
- 		ModelAndView modelAndView = new ModelAndView("contato/contato.html");
-  
- 		modelAndView.addObject("mensagem", new Mensagem());
-  
- 		return modelAndView;
- 	}
-  
- 	@PostMapping("/contato")
- 	public ModelAndView cadastrar(Mensagem mensagem) throws IOException {
-  		
- 		mensagemRepository.save(mensagem);
- 		
- 		ModelAndView modelAndView = new ModelAndView("contato/contato.html");		
-  
- 		return modelAndView;
- 	}	
+	// chama a view cadastrar e passa um objeto vazio
+	 	@GetMapping("/contato")
+	 	public ModelAndView cadastrar() {
+	 		ModelAndView modelAndView = new ModelAndView("contato/contato.html");
+	  
+	 		modelAndView.addObject("mensagem", new Mensagem());
+	  
+	 		return modelAndView;
+	 	}
+	  
+	 	@PostMapping("/contato")
+	 	public ModelAndView cadastrar(Mensagem mensagem) throws IOException {
+	  		
+	 		mensagemRepository.save(mensagem);
+	 		
+	 		ModelAndView modelAndView = new ModelAndView("contato/contatosucesso.html");		
+	  
+	 		return modelAndView;
+	 	}	
 }

@@ -10,7 +10,7 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-<body id="reservar"
+<body id="reserva"
     style="background: url('/img/fundo.jpg') no-repeat center center fixed; background-size: cover;">
 
     <header>
@@ -22,9 +22,9 @@
             <h1 class="text-center mb-8 page-title">Efetuar Reserva</h1>
             <div class="search-form">
                 <!-- Adicione o ID do pacote no modelo conforme necessário -->
-                <form id="reservaForm" class="form-control-sm" method="post"
-                    th:object="${reserva}">
-                    <input type="hidden" name="idPacote" th:value="${idPacote}" />
+                <form id="reservaForm" class="form-control-sm" method="post" th:object="${reserva}">
+				    <input type="hidden" name="idPacote" th:value="${pacote.id}" />
+				    <input type="hidden" name="idCliente" th:value="${cliente.id}" />
 
                     <h2 class="text-center mb-8 page-title">Detalhes do Pacote</h2>
                     <div class="form-group mb-2">
@@ -64,12 +64,12 @@
                         <label for="idCliente">ID do Cliente:</label>
                         <input type="text" name="idCliente" class="form-control" />
                         <h6>Não sabe o número do seu ID de Cliente? Não tem problema, basta consultar
-                            <a href="cliente2.html">aqui:</a>.</h6>
+                            <a th:href="@{/cliente/listarcliente}">aqui:</a>.</h6>
                     </div>
 
                     <div class="form-group mb-2" style="text-align: center;">
                         <button class='btn btn-primary' type="submit">Confirmar Reserva</button>
-                        <a href="/reserva/listar" class="btn btn-secondary" id="btnVoltar">Voltar</a>
+                        <a th:href="@{/reserva/listarreserva}" class="btn btn-secondary" id="btnVoltar">Voltar</a>
                     </div>
                 </form>
             </div>
@@ -79,16 +79,29 @@
     <footer> </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("reservaForm").addEventListener("submit", function (event) {
-                // Adicione um input hidden para indicar que o formulário foi submetido
-                var input = document.createElement("input");
-                input.type = "hidden";
-                input.name = "formSubmitted";
-                input.value = "true";
-                this.appendChild(input);
-            });
-        });
+       	document.addEventListener("DOMContentLoaded", function () {
+    	document.getElementById("reservaForm").addEventListener("submit", function (event) {
+        // Adicione inputs hidden para indicar que o formulário foi submetido e para os IDs
+        var inputSubmitted = document.createElement("input");
+        inputSubmitted.type = "hidden";
+        inputSubmitted.name = "formSubmitted";
+        inputSubmitted.value = "true";
+        this.appendChild(inputSubmitted);
+
+        var inputIdPacote = document.createElement("input");
+        inputIdPacote.type = "hidden";
+        inputIdPacote.name = "idPacote";
+        inputIdPacote.value = document.querySelector('input[name="idPacote"]').value;
+        this.appendChild(inputIdPacote);
+
+        var inputIdCliente = document.createElement("input");
+        inputIdCliente.type = "hidden";
+        inputIdCliente.name = "idCliente";
+        inputIdCliente.value = document.querySelector('input[name="idCliente"]').value;;
+        this.appendChild(inputIdCliente);
+    });
+});
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

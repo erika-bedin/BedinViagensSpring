@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈Reserva🏖</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+</head>
+
+<body id="editar"
+    style="background: url('/img/fundo.jpg') no-repeat center center fixed; background-size: cover;">
+    <header>
+        <nav id="header"></nav>
+    </header>
+    <main class="hidden mt-4">
+        <div class="container">
+            <h1 class="text-center mb-8 page-title">Editar Reserva</h1>
+            <div class="search-form">
+                <form class="form-control-sm" method="post" th:object="${reserva}">
+				<input type="hidden" th:field="*{id}">
+                    <div id="clienteFields">
+                        <div class="form-group mb-2">
+                            <label for="nomecliente">Nome do Cliente:</label> 
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" th:field="*{nome}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="rg">RG:</label> 
+                            <input type="text" id="rg" name="rg" placeholder="Digite seu RG" th:field="*{rg}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="cpf">CPF:</label> 
+                            <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" th:field="*{cpf}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="datanascimento">Data de Nascimento:</label> 
+                            <input type="date" id="dataNascimento" name="dataNascimento" placeholder="Digite sua data de nascimento" th:field="*{dataNascimento}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="endereco">Endereço:</label> 
+                            <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço" th:field="*{endereco}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="numero">Número:</label> 
+                            <input type="text" id="numero" name="numero" placeholder="Digite o número" th:field="*{numero}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="bairro">Bairro:</label> 
+                            <input type="text" id="bairro" name="bairro" placeholder="Digite seu bairro" th:field="*{bairro}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="cidade">Cidade:</label> 
+                            <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" th:field="*{cidade}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="estado">Estado:</label> 
+                            <select id="estado" name="estado" th:field="*{estado}">
+                                <option value="">Selecione o Estado</option>
+                                <option value="Acre">Acre</option>
+                                <option value="Alagoas">Alagoas</option>
+                                <option value="Amapá">Amapá</option>
+								<option value="Amazonas">Amazonas</option>
+								<option value="Bahia">Bahia</option>
+								<option value="Ceará">Ceará</option>
+								<option value="Distrito Federal">Distrito Federal</option>
+								<option value="Espírito Santo">Espírito Santo</option>
+								<option value="Goiás">Goiás</option>
+								<option value="Maranhão">Maranhão</option>
+								<option value="Mato Grosso">Mato Grosso</option>
+								<option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+								<option value="Minas Gerais">Minas Gerais</option>
+								<option value="Pará">Pará</option>
+								<option value="Paraíba">Paraíba</option>
+								<option value="Paraná">Paraná</option>
+								<option value="Pernambuco">Pernambuco</option>
+								<option value="Piauí">Piauí</option>
+								<option value="Rio de Janeiro">Rio de Janeiro</option>
+								<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+								<option value="Rio Grande do Norte">Rio Grande do Norte</option>
+								<option value="Rondônia">Rondônia</option>
+								<option value="Roraima">Roraima</option>
+								<option value="Santa Catarina">Santa Catarina</option>
+								<option value="São Paulo">São Paulo</option>
+								<option value="Sergipe">Sergipe</option>
+								<option value="Tocantins">Tocantins</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="email">E-mail:</label> 
+                            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" th:field="*{email}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="celular">Celular:</label> 
+                            <input type="text" id="celular" name="celular" placeholder="Digite seu celular" th:field="*{celular}">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="whatsapp">WhatsApp:</label> 
+                            <input type="checkbox" id="whatsapp" name="whatsapp" th:field="*{whatsapp}">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Editar Cliente</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Voltar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer> </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/function.js"></script>
+    <script src="/scripts/components.js"></script>
+</body>
+
+</html>

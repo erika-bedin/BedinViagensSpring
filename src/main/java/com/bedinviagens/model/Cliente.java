@@ -170,4 +170,9 @@ public class Cliente {
     public void setWhatsapp(boolean whatsapp) {
         this.whatsapp = whatsapp;
     }
+
+	public Cliente orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

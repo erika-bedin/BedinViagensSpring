@@ -4,26 +4,38 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name= "Reserva")
 public class Reserva {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;      
-    private int idCliente;
-    private int idPacote;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pacote")
+    private Pacote pacote;
+
+    
+    // Construtores, getters e setters
 
     public Reserva() {
+        // Construtor padrão
     }
-    public Reserva(Long id, int idCliente, int idPacote) {
-        this.id = id;
-        this.idCliente = idCliente;
-        this.idPacote = idPacote;
+
+    public Reserva(Cliente cliente, Pacote pacote) {
+        this.cliente = cliente;
+        this.pacote = pacote;
     }
-    
-    // Getters e Setters
+
+    // Getters e setters 
+
     public Long getId() {
         return id;
     }
@@ -32,19 +44,20 @@ public class Reserva {
         this.id = id;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public int getIdPacote() {
-        return idPacote;
+    public Pacote getPacote() {
+        return pacote;
     }
 
-    public void setIdPacote(int idPacote) {
-        this.idPacote = idPacote;
+    public void setPacote(Pacote pacote) {
+        this.pacote = pacote;
     }
+
 }

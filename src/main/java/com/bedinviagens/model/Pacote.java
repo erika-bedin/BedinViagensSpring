@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 public class Pacote {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String destino;
     private String descricao;
     private Date dataPartida;
@@ -26,7 +26,7 @@ public class Pacote {
     public Pacote() {
     }
 
-    public Pacote(int id, String destino, String descricao, Date dataPartida, Date dataRetorno, String nomeHotel, double valor) {
+    public Pacote(Long id, String destino, String descricao, Date dataPartida, Date dataRetorno, String nomeHotel, double valor) {
         this.id = id;
         this.destino = destino;
         this.descricao = descricao;
@@ -38,11 +38,11 @@ public class Pacote {
 
     // Getters e Setters
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,4 +93,9 @@ public class Pacote {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+	public Pacote orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,4 +1,4 @@
-package com.bedinviagens.entidades;
+package com.bedinviagens.model;
 
 import java.math.BigDecimal;
 import java.sql.Date;

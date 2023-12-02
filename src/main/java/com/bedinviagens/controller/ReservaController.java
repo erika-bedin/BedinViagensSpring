@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bedinviagens.entidades.Reserva;
+import com.bedinviagens.model.Reserva;
 import com.bedinviagens.repository.ReservaRepository;
  
 @Controller

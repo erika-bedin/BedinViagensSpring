@@ -1,6 +1,6 @@
 package com.bedinviagens.servicos;
 
-import com.bedinviagens.entidades.Cliente;
+import com.bedinviagens.model.Cliente;
 import com.bedinviagens.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,8 @@
-package com.bedinviagens.entidades;
+package com.bedinviagens.model;
 
 import java.util.Date;
+
+import com.bedinviagens.enums.TipoCompra;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,23 +11,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "Pesquisa")
-public class Pesquisa {
-	@Id
+@Table(name= "Compra")
+public class Compra {
+    private int id;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
     private int idCliente;
     private int idDestino;
-    private Date dataPesquisa;
-    private Date dataSimulacao;
+    private Date dataCompra;
+    private TipoCompra tipoCompra;
     private int qtdPassagens;
     private int qtdNoitesHotel;
-    private boolean simularPassagem;
-    private boolean simularHotel;
-    private boolean clienteExistente;
+    private double precoTotal;
 
     // Construtor vazio
-    public Pesquisa() {
+    public Compra() {
     }
 
     // Getters e Setters para todos os campos
@@ -54,20 +54,20 @@ public class Pesquisa {
         this.idDestino = idDestino;
     }
 
-    public Date getDataPesquisa() {
-        return dataPesquisa;
+    public Date getDataCompra() {
+        return dataCompra;
     }
 
-    public void setDataPesquisa(Date dataPesquisa) {
-        this.dataPesquisa = dataPesquisa;
+    public void setDataCompra(Date dataCompra) {
+        this.dataCompra = dataCompra;
     }
 
-    public Date getDataSimulacao() {
-        return dataSimulacao;
+    public TipoCompra getTipoCompra() {
+        return tipoCompra;
     }
 
-    public void setDataSimulacao(Date dataSimulacao) {
-        this.dataSimulacao = dataSimulacao;
+    public void setTipoCompra(TipoCompra tipoCompra) {
+        this.tipoCompra = tipoCompra;
     }
 
     public int getQtdPassagens() {
@@ -86,27 +86,11 @@ public class Pesquisa {
         this.qtdNoitesHotel = qtdNoitesHotel;
     }
 
-    public boolean isSimularPassagem() {
-        return simularPassagem;
+    public double getPrecoTotal() {
+        return precoTotal;
     }
 
-    public void setSimularPassagem(boolean simularPassagem) {
-        this.simularPassagem = simularPassagem;
-    }
-
-    public boolean isSimularHotel() {
-        return simularHotel;
-    }
-
-    public void setSimularHotel(boolean simularHotel) {
-        this.simularHotel = simularHotel;
-    }
-
-    public boolean isClienteExistente() {
-        return clienteExistente;
-    }
-
-    public void setClienteExistente(boolean clienteExistente) {
-        this.clienteExistente = clienteExistente;
+    public void setPrecoTotal(double precoTotal) {
+        this.precoTotal = precoTotal;
     }
 }

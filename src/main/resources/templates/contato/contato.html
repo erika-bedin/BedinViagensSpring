@@ -19,44 +19,44 @@
         <div class="container">
             <h1 class="page-title">Formulário de Contato</h1>
             <div class="search-form">
-                <form class="form-control-sm" action="@{/InserirMensagemServlet}" method="post">
+                <form class="form-control-sm" method="post" th:object="${mensagem}">
                     <fieldset class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" class="form-control" id="nome" name="nomeRemetente"
-                            placeholder="Digite o seu nome" required>
+                        <input type="text" class="form-control" id="nomeRemetente" name="nomeRemetente"
+                            placeholder="Digite o seu nome" th:field="*{nomeRemetente}" required>
 
                         <label for="cel">Celular:</label>
-                        <input type="tel" class="form-control" id="cel" name="telefoneRemetente"
-                            placeholder="Digite o número do seu celular" required>
+                        <input type="tel" class="form-control" id="telefoneRemetente" name="telefoneRemetente"
+                            placeholder="Digite o número do seu celular" th:field="*{telefoneRemetente}" required>
 
                         <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="emailRemetente"
-                            placeholder="Digite o seu e-mail" required>
+                        <input type="email" class="form-control" id="emailRemetente" name="emailRemetente"
+                            placeholder="Digite o seu e-mail" th:field="*{emailRemetente}" required>
 
                         <label for="mensagem">Mensagem:</label>
-                        <textarea class="form-control" id="mensagem" rows="5" name="mensagemRemetente"
-                            placeholder="Digite sua mensagem" required></textarea>
+                        <textarea class="form-control" id="mensagemRemetente" rows="5" name="mensagemRemetente"
+                            placeholder="Digite sua mensagem" th:field="*{mensagemRemetente}" required></textarea>
                     </fieldset>
                     <fieldset class="form-group">
                         <div class="row">
                             <legend class="col-form-label">Como prefere ser contatado?</legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferenciaContato"
+                                    <input class="form-check-input" type="radio" name="preferenciaContato" th:field="*{preferenciaContato}"
                                         id="gridRadios1" value="opcao1" checked>
                                     <label class="form-check-label" for="gridRadios1">
                                         E-mail
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferenciaContato"
+                                    <input class="form-check-input" type="radio" name="preferenciaContato" th:field="*{preferenciaContato}"
                                         id="gridRadios2" value="opcao2">
                                     <label class="form-check-label" for="gridRadios2">
                                         Telefone
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferenciaContato"
+                                    <input class="form-check-input" type="radio" name="preferenciaContato" th:field="*{preferenciaContato}"
                                         id="gridRadios3" value="opcao3">
                                     <label class="form-check-label" for="gridRadios3">
                                         Whatsapp
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group-hora-desejada">
                                     <label for="hora-desejada">Qual o melhor período para ser contatado?</label>
-                                    <select id="hora-desejada" name="melhorPeriodoContato">
+                                    <select id="hora-desejada" name="melhorPeriodoContato" th:field="*{melhorPeriodoContato}">
                                         <option value="">Selecione o melhor período</option>
                                         <option value="1">Manhã</option>
                                         <option value="2">Tarde</option>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1"
-                                        name="receberDescontos">
+                                        name="receberDescontos" th:field="*{receberDescontos}">
                                     <label class="form-check-label" for="gridCheck1">
                                         Quero ganhar descontos exclusivos e receber as novidades por e-mail.
                                     </label>

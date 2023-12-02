@@ -1,65 +1,87 @@
 package com.bedinviagens.controller;
 
-import com.bedinviagens.entidades.Cliente;
-import com.bedinviagens.servicos.ClienteServico;
+import com.bedinviagens.model.Cliente;
+import com.bedinviagens.repository.ClienteRepository;
 
+import java.io.IOException;
+import java.util.List;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+ 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+ 
 
 @Controller
-@RequestMapping("/clientes")
+@RequestMapping("/cliente")
 public class ClienteController {
 
     @Autowired
-    private ClienteServico clienteServico;
+    private ClienteRepository clienteRepository;
 
     // Listar todos os clientes
-    @GetMapping
-    public String listarClientes(Model model) {
-        List<Cliente> clientes = clienteServico.listarClientes();
-        model.addAttribute("clientes", clientes);
-        return "cliente/listar";
+    @GetMapping("/listarcliente")
+    public ModelAndView listar() {
+    	ModelAndView modelAndView = new ModelAndView("cliente/listar.html");
+    	 
+    	List<Cliente> clientes = clienteRepository.findAll();
+        modelAndView.addObject("clientes", clientes);
+        
+        return modelAndView;
     }
 
-    // Exibir formulário para adicionar novo cliente
-    @GetMapping("/novo")
-    public String exibirFormularioNovoCliente(Model model) {
-        Cliente novoCliente = new Cliente();
-        model.addAttribute("cliente", novoCliente);
-        return "cliente/cliente";
-    }
+    // chama a view cadastrar e passa um objeto vazio
+ 	@GetMapping("/cliente")
+ 	public ModelAndView cadastrar() {
+ 		ModelAndView modelAndView = new ModelAndView("cliente/cliente.html");
+  
+ 		modelAndView.addObject("cliente", new Cliente());
+  
+ 		return modelAndView;
+ 	}
+  
+ 	@PostMapping("/cliente")
+ 	public ModelAndView cadastrar(Cliente cliente) throws IOException {
+  		
+ 		clienteRepository.save(cliente);
+ 		
+ 		ModelAndView modelAndView = new ModelAndView("cliente/clientesucesso.html");		
+  
+ 		return modelAndView;
+ 	}	
+ 	
+ 	@GetMapping("/{id}/editar")
+ 	public ModelAndView editar(@PathVariable Long id) {
+ 		ModelAndView modelAndView = new ModelAndView("cliente/editar.html");
+  
+ 		Cliente cliente = clienteRepository.getReferenceById(id);
+ 		modelAndView.addObject("cliente", cliente);
+  
+ 		return modelAndView;
+ 	}
+  
+ 	@PostMapping("/{id}/editar")
+ 	public ModelAndView editar(Cliente cliente) {		
+  
+ 		clienteRepository.save(cliente);
+ 		ModelAndView modelAndView = new ModelAndView("cliente/clientesucesso.html");
+  
+ 		return modelAndView;
+ 	}
+ 	
+ 	@GetMapping("/{id}/excluir")
+ 	public ModelAndView excluir(@PathVariable Long id) {
+ 	    ModelAndView modelAndView = new ModelAndView("cliente/listar.html");
 
-    // Salvar novo cliente
-    @PostMapping("/novo")
-    public String salvarNovoCliente(@ModelAttribute("cliente") Cliente cliente) {
-        clienteServico.salvarCliente(cliente);
-        return "redirect:/clientes";
-    }
+ 	    Cliente cliente = clienteRepository.getReferenceById(id);
+ 	    clienteRepository.deleteById(id);
 
-    // Exibir formulário para editar cliente
-    @GetMapping("/editar/{id}")
-    public String exibirFormularioEditarCliente(@PathVariable Long id, Model model) {
-        Cliente cliente = clienteServico.obterCliente(id);
-        model.addAttribute("cliente", cliente);
-        return "cliente/editar";
-    }
+ 	    modelAndView.addObject("cliente", cliente);
 
-    // Atualizar cliente
-    @PostMapping("/editar/{id}")
-    public String atualizarCliente(@PathVariable Long id, @ModelAttribute("cliente") Cliente cliente) {
-        cliente.setId(id);
-        clienteServico.atualizarCliente(cliente);
-        return "redirect:/clientes";
-    }
-
-    // Excluir cliente
-    @GetMapping("/excluir/{id}")
-    public String excluirCliente(@PathVariable Long id) {
-        clienteServico.excluirCliente(id);
-        return "redirect:/clientes";
-    }
-}
+ 	    return modelAndView;
+ 	}
+ }

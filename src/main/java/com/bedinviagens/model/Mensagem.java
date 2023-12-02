@@ -1,4 +1,4 @@
-package com.bedinviagens.entidades;
+package com.bedinviagens.model;
 
 import com.bedinviagens.enums.MelhorPeriodoContato;
 import com.bedinviagens.enums.PreferenciaContato;

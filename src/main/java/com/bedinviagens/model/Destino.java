@@ -1,4 +1,4 @@
-package com.bedinviagens.entidades;
+package com.bedinviagens.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

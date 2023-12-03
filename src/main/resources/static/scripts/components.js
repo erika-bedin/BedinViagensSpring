@@ -57,10 +57,11 @@ function criarHeader() {
 
   const menuItems = [
     { text: 'Início', link: '/' },
-    { text: 'Cadastro', link: '/cliente/cliente'},
+    { text: 'Cadastro', link: '/cliente'},
     { text: 'Destinos', link: '/destino' },
     { text: 'Promoções', link: '/promocoes' },
-    { text: 'Contato', link: '/contato/contato' },
+    { text: 'Reservar', link: '/reserva' },
+    { text: 'Contato', link: '/contato' },
   ];
 
   menuItems.forEach(item => {

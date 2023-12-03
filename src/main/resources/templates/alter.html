@@ -38,16 +38,9 @@
                             <p>Nome do Hotel: Alter do Céu</p>
                             <p>Itens Incluídos: Passagem ida e volta e diárias com café da manhã</p>
                             <p class="bg-warning text-danger p-2">Por apenas 12 x 191,67 ✈ Valor Total: R$ 2.300,00</p>
-
-                            <!-- Formulário de Compra -->
-                            <form th:action="@{/reserva}" method="post">
-                               
-                                <!-- Campo oculto para armazenar o destino selecionado -->
-                                <input type="hidden" name="destino" th:value=" 'Alter do Chão' ">
-
-                                <button type="submit" class="btn btn-primary">Reservar</button>
-                                <a href="/destino" class="btn btn-secondary" id="btnVoltar">Voltar</a>
-                            </form>
+                            
+                            <a href="/reserva" class="btn btn-primary" id="btnReservar">Reservar</a><br>
+                            <a href="/destino" class="btn btn-secondary" id="btnVoltar">Voltar</a>
                         </div>
                     </div>
                 </div>

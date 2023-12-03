@@ -35,7 +35,7 @@ public class ClienteController {
     }
 
     // chama a view cadastrar e passa um objeto vazio
- 	@GetMapping("/cliente")
+ 	@GetMapping
  	public ModelAndView cadastrar() {
  		ModelAndView modelAndView = new ModelAndView("cliente/cliente.html");
   
@@ -44,7 +44,7 @@ public class ClienteController {
  		return modelAndView;
  	}
   
- 	@PostMapping("/cliente")
+ 	@PostMapping
  	public ModelAndView cadastrar(Cliente cliente) throws IOException {
   		
  		clienteRepository.save(cliente);
@@ -81,6 +81,22 @@ public class ClienteController {
  	    clienteRepository.deleteById(id);
 
  	    modelAndView.addObject("cliente", cliente);
+
+ 	    return modelAndView;
+ 	}
+ 	
+ 	@GetMapping("/consultarPorCPF/{cpf}")
+ 	public ModelAndView consultarPorCPF(@PathVariable String cpf) {
+ 	    ModelAndView modelAndView = new ModelAndView("cliente/consultarPorCPF.html");
+
+ 	    // Adicione a lógica para consultar o cliente pelo CPF no seu ClienteRepository
+ 	    Cliente cliente = clienteRepository.findByCpf(cpf);
+
+ 	    if (cliente != null) {
+ 	        modelAndView.addObject("cliente", cliente);
+ 	    } else {
+ 	        modelAndView.addObject("mensagem", "Cliente não encontrado para o CPF informado");
+ 	    }
 
  	    return modelAndView;
  	}

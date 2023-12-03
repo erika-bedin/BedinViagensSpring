@@ -39,15 +39,8 @@
                             <p>Itens Incluídos: Passagem ida e volta, diárias com café da manhã, passeios culturais e gastronômicos.</p>
                             <p class="bg-warning text-danger p-2">Por apenas 12 x 316,67 ✈ Valor Total: R$ 3.800,00</p>
 
-                            <!-- Formulário de Compra -->
-                            <form th:action="@{/reserva}" method="post">
-                                
-                                <!-- Campo oculto para armazenar o destino selecionado -->
-                                <input type="hidden" name="destino" th:value=" 'Salvador' ">
-
-                                <button type="submit" class="btn btn-primary">Reservar</button>
-                                <a href="/destino" class="btn btn-secondary" id="btnVoltar">Voltar</a>
-                            </form>
+                            <a href="/reserva" class="btn btn-primary" id="btnReservar">Reservar</a><br>
+                            <a href="/destino" class="btn btn-secondary" id="btnVoltar">Voltar</a>
                         </div>
                     </div>
                 </div>

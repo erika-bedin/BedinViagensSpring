@@ -21,7 +21,7 @@ public class MensagemController {
 
 	
 	// chama a view cadastrar e passa um objeto vazio
-	 	@GetMapping("/contato")
+	 	@GetMapping
 	 	public ModelAndView cadastrar() {
 	 		ModelAndView modelAndView = new ModelAndView("contato/contato.html");
 	  
@@ -30,7 +30,7 @@ public class MensagemController {
 	 		return modelAndView;
 	 	}
 	  
-	 	@PostMapping("/contato")
+	 	@PostMapping
 	 	public ModelAndView cadastrar(Mensagem mensagem) throws IOException {
 	  		
 	 		mensagemRepository.save(mensagem);

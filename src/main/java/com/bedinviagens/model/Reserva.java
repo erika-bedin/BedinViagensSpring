@@ -15,14 +15,13 @@ public class Reserva {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_pacote")
+    @JoinColumn(name = "idPacote")
     private Pacote pacote;
 
-    
     // Construtores, getters e setters
 
     public Reserva() {
@@ -34,7 +33,7 @@ public class Reserva {
         this.pacote = pacote;
     }
 
-    // Getters e setters 
+    // Getters e setters
 
     public Long getId() {
         return id;
@@ -59,5 +58,4 @@ public class Reserva {
     public void setPacote(Pacote pacote) {
         this.pacote = pacote;
     }
-
 }

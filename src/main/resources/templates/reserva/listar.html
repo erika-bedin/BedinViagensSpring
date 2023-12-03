@@ -26,90 +26,54 @@
                 <p>Envie um e-mail para reservas@bedinviagens.com.br para combinar a forma de pagamento.</p>
 
                 <p>Agradecemos por escolher nossos serviços.</p>
-                <a href="index.jsp" class="btn btn-primary">Voltar à Página Inicial</a>
-                <button type="button" id="btnListarReservas" class="btn btn-secondary">Listar Reservas</button>
+                <button onclick="window.history.back()" class="btn btn-secondary btn-sm">Voltar</button>
+                <a href="/" class="btn btn-primary">Ir para a Página Inicial</a>
             </div>
         </div>
         <div class="container">
             <h3 class="text-center mb-8 page-title">Lista de Reservas</h3>
             <div class="table-responsive">
-                <table id="tabelaReservas" class="table table-sm">
+                <div class="table table-sm">
+					<table class="table table-striped blue">
                     <thead>
                         <tr>
-                            <th>ID Reserva</th>
-                            <th>Nome do Cliente</th>
-                            <th>RG</th>
-                            <th>CPF</th>
-                            <th>Data de Nascimento</th>
-                            <th>Email</th>
-                            <th>Celular</th>
-                            <th>Destino do Pacote</th>
-                            <th>Data de Partida</th>
-                            <th>Data de Retorno</th>
-                            <th>Nome do Hotel</th>
-                            <th>Valor</th>
-                            <th>Ações</th>
+                            <th scope="col">ID Reserva</th>
+                            <th scope="col">Nome do Cliente</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Data de Nascimento</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Celular</th>
+                            <th scope="col">Destino do Pacote</th>                            
+                            <th scope="col">Valor</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="reserva : ${listarReservas}">
-                            <td th:text="${reserva.id}"></td>
+                        <tr th:each="reserva : ${reservas}">
+							<th scope="row" th:text="${reserva.id}"></th>
                             <td th:text="${reserva.cliente.nome}"></td>
                             <td th:text="${reserva.cliente.rg}"></td>
                             <td th:text="${reserva.cliente.cpf}"></td>
                             <td th:text="${reserva.cliente.dataNascimento}"></td>
                             <td th:text="${reserva.cliente.email}"></td>
                             <td th:text="${reserva.cliente.celular}"></td>
-                            <td th:text="${reserva.pacote.destino}"></td>
-                            <td th:text="${reserva.pacote.dataPartida}"></td>
-                            <td th:text="${reserva.pacote.dataRetorno}"></td>
-                            <td th:text="${reserva.pacote.nomeHotel}"></td>
+                            <td th:text="${reserva.pacote.destino}"></td>                            
                             <td th:text="${reserva.pacote.valor}"></td>
                             <td>
-                                <a th:href="@{'/AlterarReservaid=' + ${reserva.id}}"
-                                    class="btn btn-success">Editar</a>
-                                <a th:href="@{'ExcluirReserva?id=' + ${reserva.id}}"
-                                    onclick="return confirm('Deseja Excluir?')" class="btn btn-danger">Excluir</a>
+                                <a th:href="@{/reserva/{id}/editar (id=${reserva.id})}" class="btn btn-success">Editar</a>
+                                <a th:href="@{/reserva/{id}/excluir (id=${reserva.id})}" onclick="return confirm('Deseja Excluir?')" class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
                     </tbody>
+                   </div>
                 </table>
             </div>
         </div>
     </main>
 
     <footer></footer>
-
-    <script th:inline="javascript">
-        document.getElementById('btnListarReservas').addEventListener('click', function () {
-            // Cria um objeto XMLHttpRequest
-            var xhr = new XMLHttpRequest();
-
-            // Configura a requisição
-            xhr.open('GET',  /*[[@{/ListarReserva}]]*/ '', true);
-
-            // Configura a função a ser chamada quando a requisição for completada com sucesso
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 400) {
-                    // A requisição foi bem-sucedida, atualiza a tabela com os dados recebidos
-                    var tableBody = document.querySelector('#tabelaReservas tbody');
-                    tableBody.innerHTML = xhr.responseText;
-                } else {
-                    // Houve um erro na requisição
-                    console.error('Erro na requisição: ' + xhr.statusText);
-                }
-            };
-
-            // Configura a função a ser chamada em caso de erro
-            xhr.onerror = function () {
-                console.error('Erro na requisição.');
-            };
-
-            // Envia a requisição
-            xhr.send();
-        });
-    </script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/scripts/function.js"></script>
     <script src="/scripts/components.js"></script>

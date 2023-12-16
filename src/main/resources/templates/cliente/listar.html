@@ -22,7 +22,7 @@
             <div class="row">
 			<div class="col-sm-12">
 				<div class="table-responsive">
-				<table class="table table-striped blue">
+				<table class="table table-sm table-striped table-hover">
 					<thead>
 						<tr>
 							<th scope="col">ID</th>
@@ -47,7 +47,7 @@
 							<td th:text="${cliente.nome}"></td>							
 							<td th:text="${cliente.rg}"></td>							
 							<td th:text="${cliente.cpf}"></td>
-							<td th:text="${cliente.dataNascimento}"></td>
+							<td th:text="${#dates.format(cliente.dataNascimento, 'dd-MM-yyyy')}"></td>
 							<td th:text="${cliente.endereco}"></td>
 							<td th:text="${cliente.numero}"></td>
 							<td th:text="${cliente.bairro}"></td>

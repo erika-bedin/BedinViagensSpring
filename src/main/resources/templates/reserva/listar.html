@@ -34,7 +34,7 @@
             <h3 class="text-center mb-8 page-title">Lista de Reservas</h3>
             <div class="table-responsive">
                 <div class="table table-sm">
-					<table class="table table-striped blue">
+					<table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID Reserva</th>
@@ -55,7 +55,7 @@
                             <td th:text="${reserva.cliente.nome}"></td>
                             <td th:text="${reserva.cliente.rg}"></td>
                             <td th:text="${reserva.cliente.cpf}"></td>
-                            <td th:text="${reserva.cliente.dataNascimento}"></td>
+                            <td th:text="${#dates.format(reserva.cliente.dataNascimento, 'dd-MM-yyyy')}"></td>
                             <td th:text="${reserva.cliente.email}"></td>
                             <td th:text="${reserva.cliente.celular}"></td>
                             <td th:text="${reserva.pacote.destino}"></td>                            
